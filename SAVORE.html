@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savoré - Mencapai Kesehatan Anda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #076d53;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+       /* Style untuk button login di header */
+       .login-button {
+            background-color: #c70000;
+            color: white;
+            text-decoration: none;
+            padding: 10px 30px;
+            border-radius: 5px;
+            position: absolute;
+            right: 35px;
+            top: 30px;
+            z-index: 999; /* Tambahkan z-index untuk memastikan tombol terlihat */
+            font-size: 17px; /* Tambahkan ukuran font */
+            }
+
+            header {
+            background-color: #076d53;
+            padding: 10px;
+            position: relative;
+            z-index: 30; /* Pastikan header memiliki z-index lebih tinggi dari elemen lain */
+            }
+
+        .hero {
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .section {
+            padding: 40px 20px;
+            background-color: #fff;
+            margin: 20px 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section p {
+            text-align: center; /* Menyelaraskan teks di tengah */
+            margin-bottom: 20px;
+        }
+
+        /* Perubahan CSS untuk Artikel Edukasi */
+        .articles-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .articles-list li {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .articles-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .article-content a {
+            color: #00533d;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .article-content a:hover {
+            text-decoration: underline;
+        }
+
+        /* Perubahan CSS untuk Video Edukasi */
+        .videos-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .videos-list iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 315px;
+            border: none;
+            border-radius: 5px;
+        }
+        
+         /* Flexbox untuk video */
+        .videos-row {
+        display: flex;
+        flex-wrap: wrap; /* Membuat video pindah ke baris baru jika tidak cukup ruang */
+        justify-content: space-around; /* Agar video punya jarak antar kolom */
+        gap: 20px; /* Jarak antar video */
+        margin-top: 20px;
+    }
+
+        /* Atur ukuran iframe agar sesuai dengan flex container */
+        .videos-row iframe {
+        flex: 1 1 300px; /* Lebar minimum setiap video adalah 300px, dengan fleksibilitas */
+        max-width: 400px; /* Batas maksimum lebar video */
+        aspect-ratio: 16 / 9; /* Pertahankan rasio 16:9 */
+        border: none; /* Hilangkan border */
+    }
+
+        .program-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .program-buttons a.program-button {
+            background: #056419;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .program-buttons a.program-button:hover {
+            background: #044e31;
+            transform: translateY(-3px);
+        }
+
+        .webinar-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .webinar-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .webinar-form input, .webinar-form select, .webinar-form textarea, .webinar-form button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .webinar-form button {
+            background: #056419;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .webinar-form button:hover {
+            background: #00533d;
+        }
+
+        footer {
+            background: #00533d;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .social-links a {
+            color: #ffffff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 1.8em;
+        }
+
+        .social-links a:hover {
+            color: #FFD700;
+        }
+
+        @media (max-width: 768px) {
+            .program-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .articles-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .articles-list li {
+                width: 90%;
+            }
+        }   
+
+    /* CSS untuk susunan grid video */
+        .videos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 300px lebar minimum untuk setiap video */
+        gap: 20px; /* Spasi antar video */
+        margin-top: 20px;
+    }
+
+    /* Atur ukuran iframe agar sesuai dengan grid */
+        .videos-grid iframe {
+        width: 100%; /* Atur lebar iframe sesuai dengan kolom grid */
+        aspect-ratio: 16 / 9; /* Mempertahankan rasio aspek video 16:9 */
+        border: none; /* Hilangkan border */
+    }
+    </style>
+    <script>
+        function showSection(section) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach((sec) => {
+                sec.style.display = 'none';
+            });
+            document.getElementById(section).style.display = 'block';
+        }
+
+        window.onload = function() {
+            showSection('home'); // Tampilkan Beranda secara default
+        };
+
+        // Fungsi pencarian artikel
+        function searchArticles() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const articles = document.querySelectorAll('.articles-list li');
+
+            articles.forEach(article => {
+                const text = article.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    article.style.display = '';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        }
+
+        // Pemetaan kelas ke mentor
+        const mentorMapping = {
+            "penurunan-berat-badan": ["Dr. Susinawati S.", "Dr. Iko Bustomi"],
+            "meningkatkan-massa-otot": ["Dr. Chiko Widjaja", "Vito Alsky S.Gz"],
+            "manajemen-diabetes": ["Dr. Devi Alviana", "Dr. Fransiska Lidia"],
+            "manajemen-kolesterol": ["Dr. Amanda Zarvianti", "Dr. Khafidzi Rahman"],
+            "clean-eating": ["Fazllurahman Alwi S.Gz", "Friska Valencia S.Gz"],
+            "nutrisi-untuk-atlet": ["Hansen Sam", "Prastya "]
+        };
+
+        // Fungsi untuk memperbarui dropdown mentor
+        function updateMentorOptions() {
+            const kelasSelect = document.getElementById('kelas');
+            const mentorSelect = document.getElementById('mentor');
+            const selectedClass = kelasSelect.value;
+
+            // Bersihkan opsi mentor sebelumnya
+            mentorSelect.innerHTML = '<option value="">Pilih Mentor</option>';
+
+            if (selectedClass && mentorMapping[selectedClass]) {
+                mentorMapping[selectedClass].forEach(mentor => {
+                    const option = document.createElement('option');
+                    option.value = mentor.toLowerCase().replace(/ /g, '-');
+                    option.textContent = mentor;
+                    mentorSelect.appendChild(option);
+                });
+            }
+        }
+
+        // Tambahkan event listener pada dropdown kelas
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('kelas').addEventListener('change', updateMentorOptions);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <img src="https://i.pinimg.com/736x/37/a4/38/37a438e5fc325dafc90c285a36600dcb.jpg" alt="Logo Savoré" style="max-width: 250px; height: auto;">
+        <h1></h1>
+        <nav>
+            <ul>
+                <li><a href="javascript:void(0);" onclick="showSection('home')">HOME</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('program')">PROGRAM</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('artikel')">EDUCATE</a></li>
+                <li><a href="javascript:void(0);" onclick="showSection('webinar')">SHORT CLASS</a></li>
+            </ul>
+             <!-- Tambahkan button Login -->
+            <header style="text-align: right; padding: 10px 30px;">
+            <a href="login.html" style="background-color: #f0ec21; color: rgb(20, 92, 18); padding: 10px 23px; text-decoration: none; border-radius: 5px;">Login</a>
+            </header>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Beranda -->
+        <div id="home" class="content-section">
+            <!-- Hero Section -->
+            <section class="hero" style="position: relative; text-align: center;">
+                <img src="https://i.pinimg.com/736x/e2/eb/e0/e2ebe0f024d5204e3ea3c0757516b9c0.jpg" 
+                 alt="Wallpaper" 
+                 style="width: 100%; max-width: 1400px; height: auto; max-height: 300px; object-fit: cover; margin: 0 auto;">
+               
+            </section>
+        
+        <!-- About Us Section -->
+        <section class="section" style="padding: 50px 20px; text-align: center;">
+         <h2 style="font-size: 36px; margin-bottom: 20px; color: #2C3E50;">Selamat Datang, Sobat Healthy!</h2>
+        <p style="font-size: 18px; line-height: 1.8; max-width: 800px; margin: 0 auto; color: #34495E;">
+        Savoré adalah platform terdepan yang menghadirkan solusi gizi personal berbasis teknologi untuk membantu Anda menjalani gaya hidup sehat. Kami memahami bahwa kesehatan setiap individu adalah unik, sehingga kami menawarkan layanan konsultasi gizi yang disesuaikan dengan kebutuhan spesifik, mulai dari perencanaan pola makan hingga pemantauan progres secara real-time.
+        <br><br>
+        Dengan Savoré, Anda bisa meraih tujuan kesehatan dengan mudah dan efektif melalui dukungan langsung dari ahli gizi profesional. Kami juga menawarkan beragam sumber daya edukatif melalui artikel, resep sehat, video tutorial, hingga webinar langsung dengan ahli gizi.
+        </p>
+
+    <!-- Additional Emphasis -->
+    <h3 style="font-size: 24px; margin-top: 40px; color: #27AE60;">Mengapa Memilih Savoré?</h3>
+    <ul style="list-style-type: none; font-size: 18px; margin: 20px auto; max-width: 600px; text-align: left;">
+        <li>✔ Konsultasi Gizi Personal</li>
+        <li>✔ Pemantauan Progres Real-Time</li>
+        <li>✔ Artikel dan Resep Sehat</li>
+        <li>✔ Komunitas Kesehatan Aktif</li>
+    </ul>
+    
+    <h3 style="font-size: 28px; margin-top: 50px; color: #2C3E50;">MENTOR-MENTOR SAVORE</h3>
+
+    <!-- Mentor List Container with Slider -->
+    <div class="mentor-slider-container" style="overflow-x: auto; white-space: nowrap; padding: 10px 0; scroll-behavior: smooth;">
+        <!-- Mentor 1 -->
+        <div class="mentor-item" style="display: inline-block; text-align: center; width: 200px; margin: 0 10px;">
+            <img src="https://media.rs-jih.co.id/media-rsjih/jogja/dokter/img_HARewkg.JPG" alt="Mentor 1" style="width: 100%; border-radius: 50%; margin-bottom: 10px;">
+            <h4 style="color: #2980B9; font-size: 20px;">Dr. Aulia Rizqi</h4>
+            <p style="font-size: 16px; color: #34495E;">Ahli Gizi Klinis</p>
+        </div>
+
+        <!-- Mentor 2 -->
+        <div class="mentor-item" style="display: inline-block; text-align: center; width: 200px; margin: 0 10px;">
+            <img src="https://media.rs-jih.co.id/media-rsjih/jogja/dokter/img_3Wl5y0R.jpg" alt="Mentor 2" style="width: 100%; border-radius: 50%; margin-bottom: 10px;">
+            <h4 style="color: #2980B9; font-size: 20px;">Dr. Bimo Santoso</h4>
+            <p style="font-size: 16px; color: #34495E;">Ahli Nutrisi Olahraga</p>
+        </div>
+
+        <!-- Mentor 3 -->
+        <div class="mentor-item" style="display: inline-block; text-align: center; width: 200px; margin: 0 10px;">
+            <img src="https://media.rs-jih.co.id/media-rsjih/jogja/dokter/img_UDp1nQ0.jpg" alt="Mentor 3" style="width: 100%; border-radius: 50%; margin-bottom: 10px;">
+            <h4 style="color: #2980B9; font-size: 20px;">Dr. Carissa Wulan</h4>
+            <p style="font-size: 16px; color: #34495E;">Ahli Nutrisi</p>
+        </div>
+
+        <!-- Mentor 4 -->
+        <div class="mentor-item" style="display: inline-block; text-align: center; width: 200px; margin: 0 10px;">
+            <img src="https://www.ekahospital.com/storage/doctor/1657917418-dr.-Herianto,-Sp.S---Spesialis-Saraf.jpg" alt="Mentor 4" style="width: 100%; border-radius: 50%; margin-bottom: 10px;">
+            <h4 style="color: #2980B9; font-size: 20px;">Dr. Dwi Handoko</h4>
+            <p style="font-size: 16px; color: #34495E;">Spesialis Nutrisi Diabetes</p>
+        </div>
+
+        <!-- Mentor 5 -->
+        <div class="mentor-item" style="display: inline-block; text-align: center; width: 200px; margin: 0 10px;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy0Ry0fkfM0Q9uIw9lxIIJb4OV1d97S3iwJjtlp09fI8V7tuYj3ie_xihqVERogQpZtwE&usqp=CAU" alt="Mentor 4" style="width: 100%; border-radius: 50%; margin-bottom: 10px;">
+            <h4 style="color: #2980B9; font-size: 20px;">Dr. Chocro Minoto</h4>
+            <p style="font-size: 16px; color: #34495E;">Spesialis Jantung</p>
+        </div>
+
+        <!-- Mentor 6 -->
+        <div class="mentor-item" style="display: inline-block; text-align: center; width: 200px; margin: 0 10px;">
+            <img src="https://images.squarespace-cdn.com/content/v1/624d0307030ab0720c4910f2/1662610682309-L2H7HM14XLI3OJX8XXKF/prof+satya.png" alt="Mentor 4" style="width: 100%; border-radius: 50%; margin-bottom: 10px;">
+            <h4 style="color: #2980B9; font-size: 20px;">Prof. Dr. Liam Tzay</h4>
+            <p style="font-size: 16px; color: #34495E;">Spesialis Diabetes</p>
+        </div>
+
+        <!-- Mentor 7 -->
+        <div class="mentor-item" style="display: inline-block; text-align: center; width: 200px; margin: 0 10px;">
+            <img src="https://images.squarespace-cdn.com/content/v1/624d0307030ab0720c4910f2/1662610247758-AXJ07G8T3YB3KVUXG525/DSC03007.png" alt="Mentor 4" style="width: 100%; border-radius: 50%; margin-bottom: 10px;">
+            <h4 style="color: #2980B9; font-size: 20px;">Dr. Jessylyn Ophelia S.</h4>
+            <p style="font-size: 16px; color: #34495E;">Spesialis Jantung</p>
+        </div>
+
+        <!-- Mentor 8 -->
+        <div class="mentor-item" style="display: inline-block; text-align: center; width: 200px; margin: 0 10px;">
+            <img src="https://rsindriati.com/v2/file/dokter/26.jpg" alt="Mentor 4" style="width: 100%; border-radius: 50%; margin-bottom: 10px;">
+            <h4 style="color: #2980B9; font-size: 20px;">Dr. Theofany Veronica T.</h4>
+            <p style="font-size: 16px; color: #34495E;">Ahli Gizi</p>
+        </div>
+
+        <!-- Mentol 9 -->
+        <div class="mentor-item" style="display: inline-block; text-align: center; width: 200px; margin: 0 10px;">
+            <img src="https://media.rs-jih.co.id/media-rsjih/pwt/dokter/img_9EuL21e.jpg" alt="Mentor 4" style="width: 100%; border-radius: 50%; margin-bottom: 10px;">
+            <h4 style="color: #2980B9; font-size: 20px;">Dr. Handayani Fitriana</h4>
+            <p style="font-size: 16px; color: #34495E;">Spesialis Diabetes</p>
+        </div>
+
+        <!-- Mentol 10 -->
+        <div class="mentor-item" style="display: inline-block; text-align: center; width: 200px; margin: 0 10px;">
+            <img src="https://www.ekahospital.com/storage/doctor/1678245911-dr.-Oki-Yonatan-Oentiono,-SpGK.png" alt="Mentor 4" style="width: 100%; border-radius: 50%; margin-bottom: 10px;">
+            <h4 style="color: #2980B9; font-size: 20px;">Dr. Chandra Vincentrio</h4>
+            <p style="font-size: 16px; color: #34495E;">Ahli Gizi</p>
+        </div>
+    </div>
+
+    <!-- Buttons to slide left and right -->
+    <div style="margin-top: 20px;">
+        <button id="slideLeft" style="padding: 10px 20px; margin-right: 10px;">⬅</button>
+        <button id="slideRight" style="padding: 10px 20px;">➡</button>
+    </div>
+</section>
+
+<script>
+    // Add functionality to slide left and right
+    const container = document.querySelector('.mentor-slider-container');
+    const btnLeft = document.getElementById('slideLeft');
+    const btnRight = document.getElementById('slideRight');
+
+    btnLeft.addEventListener('click', () => {
+        container.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+
+    btnRight.addEventListener('click', () => {
+        container.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+</script>
+
+        </div>
+        
+        <!-- WhatsApp Contact Button -->
+            <a href="https://wa.me/6285281631918" target="_blank" style="position: fixed; left: 20px; bottom: 40px; background-color: #25D366; color: white; border-radius: 50%; padding: 15px; font-size: 24px; box-shadow: 0px 4px 6px rgba(0,0,0,0.2); z-index: 1000;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="WhatsApp" style="width: 32px; height: 32px;">
+            </a>
+    </div>
+</section>
+
+        <!-- Program Nutrisi -->
+        <div id="program" class="content-section" style="display:none;">
+            <section class="section">
+                <h2>Program Nutrisi</h2>
+                <div class="program-buttons">
+                    <a href="program-penurunan-berat-badan.html" class="program-button">Program Penurunan Berat Badan</a>
+                    <a href="program-meningkatkan-massa-otot.html" class="program-button">Program Meningkatkan Massa Otot</a>
+                    <a href="program-manajemen-diabetes.html" class="program-button">Program Manajemen Diabetes</a>
+                    <a href="program-manajemen-kolesterol.html" class="program-button">Program Manajemen Kolesterol</a>
+                    <a href="program-clean-eating.html" class="program-button">Program Clean Eating</a>
+                    <a href="program-nutrisi-untuk-atlet.html" class="program-button">Program Nutrisi untuk Atlet</a>
+                
+                </div>
+            </section>
+        </div>
+
+        <!-- Artikel Edukasi -->
+        <div id="artikel" class="content-section" style="display:none;">
+            <section class="section">
+                <h2>Artikel Edukasi</h2>
+                <input type="text" id="searchInput" onkeyup="searchArticles()" placeholder="Cari artikel.." style="margin-bottom: 20px; padding: 10px; width: 100%; max-width: 400px; display: block; margin-left: auto; margin-right: auto;">
+                <ul class="articles-list">
+                    <!-- Artikel 1 -->
+                    <li>
+                        <a href="https://www.halodoc.com/artikel/tips-dan-menu-diet-sehat-30-hari-untuk-turunkan-berat-badan?srsltid=AfmBOopWKUvOAvPX7c3-w9DRHHk4QaIK9-HPOcq13asH-qcYBo_EjBNa" target="_blank" rel="noopener noreferrer">
+                            <!-- Ganti URL gambar di bawah dengan URL gambar yang benar -->
+                            <img src="https://d1vbn70lmn1nqe.cloudfront.net/prod/wp-content/uploads/2022/05/20060723/mau-turunkan-berat-badan-ini-rekomendasi-menu-diet-seminggu-halodoc.jpg" alt="Tips dan Menu Diet Sehat 30 Hari" class="article-image">
+                            <div class="article-content">
+                                Tips dan Menu Diet Sehat 30 Hari untuk Turunkan Berat Badan
+                            </div>
+                        </a>
+                    </li>
+                    
+                    <!-- Artikel 2 -->
+                    <li>
+                        <a href="https://hellosehat.com/nutrisi/diet/cara-menjalani-clean-eating/" target="_blank" rel="noopener noreferrer">
+                            <img src="https://cdnpro.eraspace.com/media/mageplaza/blog/post/m/a/manfaatcleaneating_primary.jpeg" alt="Panduan Lengkap Pola Makan Clean Eating" class="article-image">
+                            <div class="article-content">
+                                Panduan Lengkap Pola Makan Clean Eating
+                            </div>
+                        </a>
+                    </li>
+                    
+                    <!-- Artikel 3 -->
+                    <li>
+                        <a href="https://www.halodoc.com/artikel/ini-4-alasan-clean-eating-baik-dilakukan?srsltid=AfmBOoo_5wZ-xB5CPsw7wRRMwtJl4L4GYncvq6LOm9eWcibatxcfpc3y" target="_blank" rel="noopener noreferrer">
+                            <img src="https://akcdn.detik.net.id/api/wm/2020/02/29/c1ab3d55-4da4-48b0-ba3f-3bd5f21e1046_169.jpeg?w=650" alt="Ini 4 Alasan Clean Eating Baik Dilakukan" class="article-image">
+                            <div class="article-content">
+                                Ini 4 Alasan Clean Eating Baik Dilakukan
+                            </div>
+                        </a>
+                    </li>
+                    
+                    <!-- Artikel 4 -->
+                    <li>
+                        <a href="https://www.halodoc.com/artikel/pola-makan-yang-dapat-mencegah-kolesterol-naik?srsltid=AfmBOor1u-B2xVbWbs6UCSYm-5i33nOqsAEiri4Pe7ndHPEMnqlm3VOJ" target="_blank" rel="noopener noreferrer">
+                            <img src="https://d1bpj0tv6vfxyp.cloudfront.net/articles/52a352af-cb10-448e-81b1-f74ba6c7e4cc_article_image_url.webp" alt="Pola Makan yang Dapat Mencegah Kolesterol Naik" class="article-image">
+                            <div class="article-content">
+                                Pola Makan yang Dapat Mencegah Kolesterol Naik
+                            </div>
+                        </a>
+                    </li>
+                    
+                    <!-- Artikel 5 -->
+                    <li>
+                        <a href="https://media.neliti.com/media/publications/229622-pengaruh-pola-makan-terhadap-kadar-koles-f532cf9f.pdf" target="_blank" rel="noopener noreferrer">
+                            <img src="https://storage.googleapis.com/jagadiri-web-prod/uploads/ckeditor/pictures/30/content_shutterstock_264882746.jpg" alt="PENGARUH POLA MAKAN TERHADAP KADAR KOLESTEROL TOTAL" class="article-image">
+                            <div class="article-content">
+                                PENGARUH POLA MAKAN TERHADAP KADAR KOLESTEROL TOTAL
+                            </div>
+                        </a>
+                    </li>
+                    
+                    <!-- Artikel 6 -->
+                    <li>
+                        <a href="https://www.alodokter.com/ini-daftar-makanan-penurun-kolesterol-yang-perlu-anda-ketahui" target="_blank" rel="noopener noreferrer">
+                            <img src="https://img-cdn.medkomtek.com/srjOCT-GfZ3eZbtGHIoEwvShNbA=/fit-in/730x411/smart/filters:quality(100):strip_icc():format(webp)/article/km9Q95phTEEUPBe5J5DHS/original/002993400_1563848840-7-Jenis-Makanan-yang-Dapat-Memicu-Kolesterol-Tinggi-By-Ekaterina-Markelova-shutterstock.jpg" alt="Daftar Makanan Penurun Kolesterol yang Perlu Anda Ketahui" class="article-image">
+                            <div class="article-content">
+                                Daftar Makanan Penurun Kolesterol yang Perlu Anda Ketahui
+                            </div>
+                        </a>
+                    </li>
+                    
+                    <!-- Artikel 7 -->
+                    <li>
+                        <a href="https://herminahospitals.com/id/articles/gaya-hidup-sehat-agar-terhindar-diabetes-melitus.html" target="_blank" rel="noopener noreferrer">
+                            <img src="https://awsimages.detik.net.id/community/media/visual/2023/01/04/pola-makan-untuk-diabetes_43.jpeg?w=1200" alt="Gaya Hidup Sehat Agar Terhindar Diabetes Melitus" class="article-image">
+                            <div class="article-content">
+                                Gaya Hidup Sehat Agar Terhindar Diabetes Melitus
+                            </div>
+                        </a>
+                    </li>
+                    
+                    <!-- Artikel 8 -->
+                    <li>
+                        <a href="https://gymfitnessindo.com/pola-makan-seimbang-untuk-membentuk-otot" target="_blank" rel="noopener noreferrer">
+                            <img src="https://res.cloudinary.com/dk0z4ums3/image/upload/v1641829615/attached_image/ini-dia-pola-makan-mencegah-melemahnya-jaringan-otot.jpg" alt="Pola Makan Seimbang untuk Membentuk Otot" class="article-image">
+                            <div class="article-content">
+                                Pola Makan Seimbang untuk Membentuk Otot
+                            </div>
+                        </a>
+                    </li>
+                    
+                     <!-- Video Edukasi yang ditambahkan ke dalam halaman artikel -->
+
+                     <!-- Bagian Video Edukasi yang dipindahkan -->
+                <section class="section">
+                    <h2>Video Edukasi</h2>
+                    <div class="videos-row">
+                        <iframe src="https://www.youtube.com/embed/hw_sa6JFePM" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/I1-aCDnKjWc" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/xxjqrw1XNjI" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/i8iJfCrjJr8" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/1fChXVdeVH0" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/dNfnf4jBFiw" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/hNYzeFmSiz4" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/WisZqSKY8VI" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/ypRwY4fK4qk" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/F0jm_7UoRCo" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/DfGxjeGY6Gg" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/4MWCrTgghZE" allowfullscreen></iframe>
+                    </div>
+                         </a>
+                    </li>
+                </section>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Short Class Savoré -->
+    <div id="webinar" class="content-section" style="display:none;">
+        <section class="section webinar-form">
+            <h2>Daftar Short Class Savoré</h2>
+        
+            <!-- Tambahkan id pada form -->
+        <form id="webinarForm">
+            <input type="text" name="nama" placeholder="Nama Lengkap" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <select name="kelas" id="kelas" required>
+                <option value="">Pilih Kelas</option>
+                <option value="penurunan-berat-badan">Program Penurunan Berat Badan</option>
+                <option value="meningkatkan-massa-otot">Program Meningkatkan Massa Otot</option>
+                <option value="manajemen-diabetes">Program Manajemen Diabetes</option>
+                <option value="manajemen-kolesterol">Program Manajemen Kolesterol</option>
+                <option value="clean-eating">Program Clean Eating</option>
+                <option value="nutrisi-untuk-atlet">Program Nutrisi untuk Atlet</option>
+            </select>
+            <select name="mentor" id="mentor" required>
+                <option value="">Pilih Mentor</option>
+            </select>
+            <button type="submit" id="daftarButton">Daftar</button>
+        </form>
+        <!-- Tempat untuk menampilkan pesan -->
+        <p id="daftarMessage" style="display: none; color: green; margin-top: 10px;">Anda Sudah Terdaftar</p>
+    </section>
+    </div>
+            </section>
+        </div>
+        <script>
+            // Ambil elemen form dan pesan
+            const form = document.getElementById('webinarForm'); // Benar
+            const message = document.getElementById('daftarMessage');
+            
+            // Event listener ketika form disubmit
+            form.addEventListener('submit', function(event) {
+                // Mencegah pengiriman form default agar tidak refresh halaman
+                event.preventDefault();
+                
+                // Tampilkan pesan bahwa pengguna sudah terdaftar
+                message.style.display = 'block';
+                
+                // Reset form jika diperlukan
+                form.reset();
+            });
+        </script>        
+    </main>
+
+    <footer>
+        <!-- Social Media Links Centered in Footer -->
+        <div class="social-links" style="text-align: center; margin-top: 20px;">
+            <a href="mailto:savore.id@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://instagram.com/savore" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/savore" target="_blank"><i class="fab fa-youtube"></i></a>
+            <p>&copy; 2024 Savoré. Semua hak dilindungi.</p>
+        </div>
+    </footer>
+</body>
+</html>
